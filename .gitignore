@@ -1,0 +1,11 @@
+# Ignore the massive raw data
+data/raw/
+*.zip
+
+# Ignore local Python environment stuff
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+
+# Ignore large model checkpoints if they exceed 50MB (optional)
+# models/checkpoints/*.keras
