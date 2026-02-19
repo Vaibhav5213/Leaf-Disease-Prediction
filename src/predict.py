@@ -1,8 +1,11 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Suppresses annoying TensorFlow terminal warnings
 import tensorflow as tf
+from pathlib import Path
 import numpy as np
 from segmentation import isolate_leaf
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # Hardcoded classes
 CLASS_NAMES = [
@@ -20,8 +23,9 @@ CLASS_NAMES = [
     'Tomato___Tomato_Yellow_Leaf_Curl_Virus', 'Tomato___Tomato_mosaic_virus', 'Tomato___healthy'
 ]
 
-MODEL_PATH = "../models/checkpoints/universal_model.keras"
-print("Loading Universal Doctor model...")
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_PATH = os.path.join(BASE_DIR, "models", "checkpoints", "universal_model.keras")
+print("Loading model...")
 model = tf.keras.models.load_model(MODEL_PATH)
 
 def predict_disease(image_bytes):
