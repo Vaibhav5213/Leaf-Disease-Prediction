@@ -4,6 +4,8 @@
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Live-red.svg)
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://insert-your-actual-link-here.streamlit.app)
+
 ## 📌 Overview
 This Model is an end-to-end Computer Vision application designed to diagnose plant diseases from images of leaves. The model was trained to classify **38 distinct classes** of crop diseases and healthy leaves. 
 
@@ -35,3 +37,4 @@ git clone [https://github.com/Vaibhav5213/Leaf-Disease-Prediction.git](https://g
 cd universal-plant-doctor
 
 pip install -r requirements.txt
+
