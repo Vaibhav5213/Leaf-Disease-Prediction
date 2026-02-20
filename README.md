@@ -33,4 +33,5 @@ If you want to run this project on your own machine, follow these steps.
 ```bash
 git clone [https://github.com/Vaibhav5213/Leaf-Disease-Prediction.git](https://github.com/Vaibhav5213/Leaf-Disease-Prediction.git)
 cd universal-plant-doctor
+
 pip install -r requirements.txt
