@@ -1,0 +1,18 @@
+Option A: Run the Deployed Model directly:
+Check the ReadMe file to get link of  running the model directly from cloud
+
+
+Option B: Run the Web App (Streamlit):
+This will launch the visual user interface in your web browser.
+'''bash
+cd src
+streamlit run app.py
+'''
+
+
+Option C: Run the Terminal CLI:
+If you want to bypass the web UI and test an image directly from your terminal, use main.py.
+'''bash
+cd src
+python main.py path/to/your/test_image.jpg
+'''
