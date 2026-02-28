@@ -1,104 +1,63 @@
-# 🌿 Plant Disease Prediction
+# 🌿 Plant Disease Vision API & Dashboard
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://leaf-disease-prediction-model.streamlit.app)
-
-
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://leaf-disease-prediction-model.streamlit.app/)
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
+![Computer Vision](https://img.shields.io/badge/Computer_Vision-OpenCV-green.svg)
+
+> **[🚀 Click here to try the Live Web Demo](https://leaf-disease-prediction-model.streamlit.app/)**
+
+An end-to-end Computer Vision pipeline that detects plant diseases from raw leaf images. Built with a focus on production readiness, this project features an automated image segmentation engine, an interactive web dashboard, and a fully deployable REST API.
+
+## 💡 The Value
+Agricultural technology requires fast, on-the-edge diagnostics. This project was built to demonstrate how a backend computer vision model can be seamlessly wrapped into a lightweight API, allowing mobile apps or agricultural web platforms to instantly diagnose crop health via HTTP requests.
+
+## 🚀 Core Features
+* **Production API (FastAPI):** A high-performance backend wrapper that accepts raw image uploads and returns structured JSON predictions.
+* **Interactive Frontend (Streamlit):** A user-friendly web interface for visual testing and demonstration.
+* **Smart Segmentation:** Uses OpenCV to automatically isolate the leaf from noisy backgrounds before feeding it to the model, increasing accuracy.
+* **CLI Engine:** A built-in command-line tool for rapid local image testing.
 
 ---
 
-## 📌 Overview
+## ⚙️ How to Run the API Server
 
-This Model is an end-to-end Computer Vision application designed to diagnose plant diseases from images of leaves. The model was trained to classify **38 distinct classes** of crop diseases and healthy leaves.
+This project includes a production-ready FastAPI wrapper. To boot the server locally:
 
-To bridge the gap between idealized lab data and messy real-world photos, this pipeline features a dedicated preprocessing engine that dynamically isolates the leaf and eliminates background noise before passing it to the neural network.
+1. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
----
+2. **Start the FastAPI server from the root directory:**
+   ```bash
+   uvicorn src.api:app --reload
+   ```
 
-## 🚀 Live Demo
-
-**Try the web app here:**  
-👉 https://leaf-disease-prediction-model.streamlit.app
-
----
-
-## 🧠 The Architecture & "Domain Shift" Solution
-
-A common issue in agricultural AI is that models trained on clean datasets fail in the real world due to complex backgrounds. To solve this **Domain Shift** problem, this project utilizes a modular backend:
-
-1. **Segmentation (`src/segmentation.py`)**  
-   Uses the `rembg` (U^2-Net) AI engine to completely strip the background from the user's uploaded image.
-
-2. **Inference (`src/predict.py`)**  
-   Passes the cleanly segmented, RGB-formatted leaf to a custom Convolutional Neural Network (CNN) built with TensorFlow/Keras.
-
-3. **Interface (`src/app.py` & `src/main.py`)**  
-   Provides both a Streamlit Web UI and a local Command Line Interface (CLI).
+3. **Test the endpoints:**
+   Open `http://127.0.0.1:8000/docs` in your browser to access the interactive Swagger UI. You can upload images directly through the browser and view the JSON response.
 
 ---
 
-## 💻 How to Run Locally
+## 💻 How to Run the CLI Tool
 
-If you want to run this project on your own machine, follow these steps.
-
-### **1. Clone the repository and install dependencies**
+If you want to test an image quickly without starting the web server, you can use the built-in CLI engine:
 
 ```bash
-git clone https://github.com/Vaibhav5213/Leaf-Disease_prediction.git
-cd Leaf-Disease_prediction
-pip install -r requirements.txt
+python src/main.py "path/to/your/leaf_image.jpg"
 ```
+*The terminal will output a cleanly formatted list of disease predictions and confidence scores.*
 
 ---
 
-### **Option A: Run the Web App (Streamlit)**
-
-This will launch the visual user interface in your web browser.
-
-```bash
-cd src
-streamlit run app.py
+## 📂 Architecture
+```text
+Leaf-Disease-Prediction/
+├── models/        # Saved model weights and architecture
+├── src/           # Source code
+│   ├── api.py           # FastAPI server and endpoints
+│   ├── main.py          # Command-line interface engine
+│   ├── predict.py       # Core inference logic
+│   └── segmentation.py  # OpenCV image isolation functions
+└── requirements.txt
 ```
-
----
-
-### **Option B: Run the Terminal CLI**
-
-If you want to bypass the web UI and test an image directly from your terminal, use `main.py`.
-
-```bash
-cd src
-python main.py path/to/your/test_image.jpg
-```
-
----
-
-## 📂 Project Structure
-
-```
-plant_disease_project/
-├── data/
-│   └── raw/                        # Empty (See Note inside)
-├── models/
-│   └── checkpoints/
-│       └── universal_model.keras   # The trained weights
-├── notebooks/
-│   ├── Plant_village_1.ipynb       # CNN architecture and training
-│   └── Plant_village_2.ipynb       # Inference testing
-├── src/
-│   ├── app.py                      # Streamlit frontend
-│   ├── main.py                     # Local CLI script
-│   ├── predict.py                  # Model prediction logic
-│   └── segmentation.py             # Background elimination engine
-└── requirements.txt                # Deployment dependencies
-```
-
----
-
-## 📚 Data Acknowledgement
-
-The underlying model was trained using the open-access **PlantVillage Dataset**. Due to GitHub's file size constraints, the raw dataset is not hosted in this repository, but the complete training pipeline can be reviewed in the `notebooks/` directory. The dataset too, can be found on official channels.
-
-**Citation:**  
-Hughes, D. P., & Salathe, M. (2015). *An open access repository of images on plant health to enable the development of mobile disease diagnostics.*
