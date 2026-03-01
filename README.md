@@ -20,7 +20,7 @@ This project is an end-to-end computer vision system for diagnosing plant diseas
 
 To bridge the gap between idealized lab data and messy real-world photos, this pipeline features a dedicated preprocessing engine that dynamically isolates the leaf and eliminates background noise before passing it to the neural network. It includes a visual frontend, a CLI, and a deployable REST API built with FastAPI.
 
-![Example](Leaf-Disease-Prediction/assets/Example.jpg)
+![Example](assets/Example.jpg)
 
 ---
 
@@ -130,3 +130,4 @@ plant_disease_project/
 ## 📚 Data Acknowledgement
 
 The underlying model was trained using the open-access **PlantVillage Dataset**. Due to GitHub's file size constraints, the raw dataset is not hosted in this repository, but the complete training pipeline can be reviewed in the `notebooks/` directory. The dataset too, can be found on official channels.
+
