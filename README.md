@@ -49,7 +49,7 @@ In machine learning, architecture is about balancing accuracy with computational
 * **Classification Head:** The 2D matrices are flattened into a 4,608-dimensional feature vector, fed into a 256-neuron `Dense` layer, regulated by a `Dropout` layer, and output through a final 38-neuron dense layer for class prediction.
 
 ### 2. The Tradeoffs (The "Why")
-* **Custom CNN vs. Transfer Learning:** * *The Tradeoff:* Training a model from scratch takes more epochs to converge than fine-tuning an existing model.
+* **Custom CNN vs. Transfer Learning:** *The Tradeoff:* Training a model from scratch takes more epochs to converge than fine-tuning an existing model.
   * *The Benefit:* Total parameter control. Our model contains roughly 1.4 million parameters, making the `.keras` file incredibly lightweight. This drastically reduces model size and enables efficient API inference.
 * **Baked-in Augmentation:** By placing the rescaling and augmentation steps directly inside the Keras sequential model, the deployment pipeline is heavily simplified. The API and CLI do not need redundant mathematical preprocessing scripts—raw bytes go in, and predictions come out.
 * **Deep vs. Wide Downsampling:** Plant diseases present as micro-textures (e.g., tiny rust spots or blight rings). Using 5 gradual pooling layers preserves these minute spatial relationships much better than aggressively downsampling the image early in the network.
@@ -130,5 +130,6 @@ plant_disease_project/
 ## 📚 Data Acknowledgement
 
 The underlying model was trained using the open-access **PlantVillage Dataset**. Due to GitHub's file size constraints, the raw dataset is not hosted in this repository, but the complete training pipeline can be reviewed in the `notebooks/` directory. The dataset too, can be found on official channels.
+
 
 
