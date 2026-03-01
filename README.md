@@ -131,3 +131,4 @@ plant_disease_project/
 
 The underlying model was trained using the open-access **PlantVillage Dataset**. Due to GitHub's file size constraints, the raw dataset is not hosted in this repository, but the complete training pipeline can be reviewed in the `notebooks/` directory. The dataset too, can be found on official channels.
 
+
