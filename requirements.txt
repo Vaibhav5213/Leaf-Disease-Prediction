@@ -3,6 +3,7 @@ tensorflow-cpu
 pillow
 rembg[cpu]
 numpy
+uuid
 fastapi
 uvicorn
 python-multipart
