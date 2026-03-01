@@ -1,5 +1,6 @@
 import sys
 import os
+import uuid
 from fastapi import FastAPI, File, UploadFile
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -15,6 +16,8 @@ async def predict_endpoint(file: UploadFile = File(...)):
     image_bytes = await file.read()
     segmented_img, results = predict_disease(image_bytes)
     return {
-        "filename": file.filename,
-        "predictions": results
-    }
+    "inference_id": f"req_{uuid.uuid4().hex[:8]}",
+    "filename": file.filename,
+    "predictions": results,
+    "status": "success"
+}
